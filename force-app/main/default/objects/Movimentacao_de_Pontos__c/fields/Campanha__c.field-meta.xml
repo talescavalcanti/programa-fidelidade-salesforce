@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Campanha__c</fullName>
+    <deleteConstraint>Restrict</deleteConstraint>
+    <label>Campanha</label>
+    <lookupFilter>
+        <active>true</active>
+        <errorMessage>Selecione uma campanha ativa e vigente na data da movimentação.</errorMessage>
+        <filterItems>
+            <field>Campanha_Promocional__c.Ativa__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </filterItems>
+        <filterItems>
+            <field>Campanha_Promocional__c.Data_de_Inicio__c</field>
+            <operation>lessOrEqual</operation>
+            <valueField>$Source.Data_da_Movimentacao__c</valueField>
+        </filterItems>
+        <filterItems>
+            <field>Campanha_Promocional__c.Data_de_Fim__c</field>
+            <operation>greaterOrEqual</operation>
+            <valueField>$Source.Data_da_Movimentacao__c</valueField>
+        </filterItems>
+        <isOptional>false</isOptional>
+    </lookupFilter>
+    <referenceTo>Campanha_Promocional__c</referenceTo>
+    <relationshipLabel>Movimentações de Pontos</relationshipLabel>
+    <relationshipName>Movimentacoes</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

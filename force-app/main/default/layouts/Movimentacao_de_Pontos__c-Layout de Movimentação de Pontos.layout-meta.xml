@@ -34,6 +34,10 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
+                <field>Campanha__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
                 <field>Descricao__c</field>
             </layoutItems>
         </layoutColumns>

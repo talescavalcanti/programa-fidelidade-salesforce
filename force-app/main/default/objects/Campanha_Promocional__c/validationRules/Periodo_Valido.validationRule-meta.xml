@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Periodo_Valido</fullName>
+    <active>true</active>
+    <description>A data de fim não pode ser anterior à data de início</description>
+    <errorConditionFormula>Data_de_Fim__c &lt; Data_de_Inicio__c</errorConditionFormula>
+    <errorDisplayField>Data_de_Fim__c</errorDisplayField>
+    <errorMessage>A data de fim deve ser igual ou posterior à data de início.</errorMessage>
+</ValidationRule>

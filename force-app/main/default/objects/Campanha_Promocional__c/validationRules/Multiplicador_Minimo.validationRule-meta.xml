@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Multiplicador_Minimo</fullName>
+    <active>true</active>
+    <description>O multiplicador não pode reduzir os pontos do cliente</description>
+    <errorConditionFormula>Multiplicador__c &lt; 1</errorConditionFormula>
+    <errorDisplayField>Multiplicador__c</errorDisplayField>
+    <errorMessage>O multiplicador deve ser maior ou igual a 1.</errorMessage>
+</ValidationRule>
