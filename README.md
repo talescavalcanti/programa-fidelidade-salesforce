@@ -69,4 +69,5 @@ Pontos de atenção ao implantar em um org novo:
 ## Documentação
 
 - [`docs/RELATORIO_FINAL.md`](docs/RELATORIO_FINAL.md) — o que foi feito, decisões, matriz de requisitos com evidências e pendências.
+- [`docs/GUIA_DE_TESTES.md`](docs/GUIA_DE_TESTES.md) — instalação em um org novo, testes automatizados e conferência das telas, passo a passo.
 - [`docs/ROTEIRO_APRESENTACAO.md`](docs/ROTEIRO_APRESENTACAO.md) — roteiro de apresentação, demonstração passo a passo e perguntas prováveis do professor.

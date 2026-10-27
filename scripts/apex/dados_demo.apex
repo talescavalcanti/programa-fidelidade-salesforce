@@ -21,7 +21,12 @@ Map<String, Beneficio__c> b = new Map<String, Beneficio__c>();
 for (Beneficio__c item : catalogo) { b.put(item.Name, item); }
 
 // ---- Campanha vigente ----
-Campanha_Promocional__c campanha = [SELECT Id FROM Campanha_Promocional__c WHERE Name = 'Pontos em Dobro Nov' LIMIT 1];
+// Reaproveita a campanha se ela já existir; em um org novo, cria uma vigente (multiplicador 2).
+List<Campanha_Promocional__c> existentes = [SELECT Id FROM Campanha_Promocional__c WHERE Name = 'Pontos em Dobro Nov' LIMIT 1];
+Campanha_Promocional__c campanha = existentes.isEmpty()
+    ? new Campanha_Promocional__c(Name = 'Pontos em Dobro Nov', Multiplicador__c = 2, Data_de_Inicio__c = Date.today().addDays(-30), Data_de_Fim__c = Date.today().addDays(60), Ativa__c = true)
+    : existentes[0];
+if (campanha.Id == null) { insert campanha; }
 
 // ---- Participantes ----
 Programa_Fidelidade__c maria = new Programa_Fidelidade__c(Name = 'Maria Souza', E_mail__c = 'maria.souza@exemplo.com', Cliente_VIP__c = true);
