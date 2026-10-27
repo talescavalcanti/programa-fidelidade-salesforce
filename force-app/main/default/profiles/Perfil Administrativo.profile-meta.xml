@@ -160,7 +160,7 @@
         <layout>Programa_Fidelidade__c-Programa Administrativo</layout>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>Resgate__c-Resgate Gestor</layout>
+        <layout>Resgate__c-Resgate Administrativo</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>Movimentacao_de_Pontos__c-Layout de Movimentação de Pontos</layout>

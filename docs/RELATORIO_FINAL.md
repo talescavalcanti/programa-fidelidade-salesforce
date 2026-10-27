@@ -104,7 +104,7 @@ Legenda: **Validado** = há teste automatizado ou verificação por consulta/API
 | R-09 | Fórmulas (Saldo Atual, Categoria Atual) | Em Saldo de Pontos | Validado | `categoriaSegueAsFaixasDePontos`, fluxo ponta a ponta |
 | R-10 | Roll-Ups (Total de pontos, Total de resgates) | Em Programa (+ Última Movimentação) | Validado | Total de Pontos = 2000, Total de Resgates = 500 conferidos |
 | R-11 | Record Types em Benefício | Cashback, Desconto, Brinde | Validado | `tiposDeRegistroDoBeneficioExigemOsCamposCertos` |
-| R-12 | Page Layouts por perfil | Programa (3 layouts), Resgate (2), Benefício (1 por tipo) | Implantado | Atribuições nos perfis; conferir visualmente |
+| R-12 | Page Layouts por perfil | Programa (3 layouts), Resgate (3), Benefício (1 por tipo) | Implantado | Atribuições nos perfis; conferir visualmente |
 | R-13 | 3 Record-Triggered Flows | RT Programa, RT Movimentação, RT Resgate | Validado | Fluxo ponta a ponta e `AutomacaoFidelidadeTest` |
 | R-14 | 1 Screen Flow | `SF_Novo_Resgate` | Implantado | Ativo no org; **não executei as telas** (seção 7) |
 | R-15 | Subflows | `Sub_Verificar_Limite` (usado por RT e Screen Flow), `Sub_Validar_Resgate` | Validado | Subflow de limite no RT-3; validação executada pela API (3 cenários) |
@@ -124,7 +124,7 @@ Legenda: **Validado** = há teste automatizado ou verificação por consulta/API
 | R-29 | 2 a 3 LWCs | `saldoPontosCard`, `beneficiosDisponiveis`, `consultaCepStatus` | Implantado | Apex do controlador testado (100%); **tela não conferida** |
 | R-30 | Dashboard Executivo (Engajamento, Clientes ativos) | `Dashboard_Executivo` | Validado (números) | Relatórios conferidos com SOQL; aparência é sua |
 | R-31 | Dashboard Operacional (Resgates pendentes, Pontuação acumulada) | `Dashboard_Operacional` | Validado (números) | Idem |
-| R-32 | Repositório dedicado | GitHub `programa-fidelidade-salesforce` | Em andamento | Falta você commitar e enviar o trabalho recente (seção 8) |
+| R-32 | Repositório dedicado | GitHub `programa-fidelidade-salesforce` (privado) | Validado | Commit `a6cf42c` enviado; repositório remoto idêntico ao local |
 | R-33 | Marca: nome, identidade, logomarca | PontoCerto, paleta, SVGs | Validado | `docs/marca/` |
 
 (*) A Sharing Rule cria o compartilhamento de forma **assíncrona**, logo após o commit. Por isso ela não pode
@@ -155,7 +155,7 @@ Eu validei por API, testes e consultas, mas não abri o navegador. Confira estes
 
 ## 8. Pendências e limites conhecidos (sem rodeios)
 
-- **Commits:** a pedido seu, eu não fiz commits. Todo o trabalho recente está só no disco (seção 9).
+- **Commits:** a pedido do autor, os commits foram feitos por ele mesmo, sem assinatura de ferramenta (seção 9).
 - **Screen Flow e LWCs** não foram exercitados em navegador. Se alguma tela se comportar diferente, o ajuste é pequeno.
 - **Dynamic Forms/Actions:** o Salesforce aceitou os metadados; a aparência final depende da conferência visual.
 - **Usuários e dados de demonstração** ficam só no org. Os usuários de demonstração usam o e-mail `jtcs@cesar.school`;
@@ -171,12 +171,14 @@ Eu validei por API, testes e consultas, mas não abri o navegador. Confira estes
   antes de carregar o cenário de demonstração.
 - **Logo dentro do Salesforce:** a logomarca está em `docs/marca/`; o app usa só a cor da marca no cabeçalho.
 
-## 9. Comandos para versionar
+## 9. Histórico de versionamento
 
-```bash
-cd /Users/talescavalcanti/Desktop/cesar/sesforce/fidelidade
-git status --short
-git add -A
-git commit -m "feat: modelo de dados, segurança, automações, Apex, ViaCEP, interface, analytics e documentação"
-git push
-```
+| Commit | Conteúdo |
+|---|---|
+| `ad1cbd8` | Projeto SFDX inicial |
+| `63feeca` | Objeto Programa Fidelidade com campos básicos |
+| `3ace510` | Objeto Movimentação de Pontos, guias, layouts e permissões |
+| `9535177` | Objeto Campanha Promocional, relação com Movimentação e regras de validação |
+| `a6cf42c` | Modelo de dados completo, segurança, automações, Apex, ViaCEP, interface, analytics e documentação |
+
+Para repetir a implantação em outro org, veja o README.
