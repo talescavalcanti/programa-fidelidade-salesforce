@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Pontos_Positivos</fullName>
+    <active>true</active>
+    <description></description>
+    <errorConditionFormula>Pontos_Necessarios__c &lt;= 0</errorConditionFormula>
+    <errorDisplayField>Pontos_Necessarios__c</errorDisplayField>
+    <errorMessage>Os pontos necessários devem ser maiores que zero.</errorMessage>
+</ValidationRule>

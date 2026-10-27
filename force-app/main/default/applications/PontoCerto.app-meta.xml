@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomApplication xmlns="http://soap.sforce.com/2006/04/metadata">
+    <brand>
+        <headerColor>#0B3C5D</headerColor>
+        <shouldOverrideOrgTheme>true</shouldOverrideOrgTheme>
+    </brand>
+    <description>PontoCerto: programa de fidelidade com pontos, benefícios, resgates e campanhas</description>
+    <formFactors>Large</formFactors>
+    <isNavAutoTempTabsDisabled>false</isNavAutoTempTabsDisabled>
+    <isNavPersonalizationDisabled>false</isNavPersonalizationDisabled>
+    <isNavTabPersistenceDisabled>false</isNavTabPersistenceDisabled>
+    <isOmniPinnedViewEnabled>false</isOmniPinnedViewEnabled>
+    <label>PontoCerto</label>
+    <navType>Standard</navType>
+    <tabs>standard-home</tabs>
+    <tabs>Programa_Fidelidade__c</tabs>
+    <tabs>Movimentacao_de_Pontos__c</tabs>
+    <tabs>Resgate__c</tabs>
+    <tabs>Beneficio__c</tabs>
+    <tabs>Campanha_Promocional__c</tabs>
+    <tabs>Endereco__c</tabs>
+    <tabs>Saldo_de_Pontos__c</tabs>
+    <tabs>Log_de_Integracao__c</tabs>
+    <tabs>standard-report</tabs>
+    <tabs>standard-Dashboard</tabs>
+    <uiType>Lightning</uiType>
+</CustomApplication>

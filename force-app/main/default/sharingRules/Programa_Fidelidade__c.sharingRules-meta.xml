@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sharingCriteriaRules>
+        <fullName>Clientes_VIP_para_Operadores</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>Compartilha clientes VIP (somente leitura) com todos os operadores</description>
+        <label>Clientes VIP para Operadores</label>
+        <sharedTo>
+            <role>Operador</role>
+        </sharedTo>
+        <criteriaItems>
+            <field>Cliente_VIP__c</field>
+            <operation>equals</operation>
+            <value>Verdadeiro</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+</SharingRules>

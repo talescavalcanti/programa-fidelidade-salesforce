@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Saldo_Suficiente</fullName>
+    <active>true</active>
+    <description></description>
+    <errorConditionFormula>AND(ISNEW(), Pontos__c &gt; Programa_Fidelidade__r.Total_de_Pontos__c - Programa_Fidelidade__r.Total_de_Resgates__c)</errorConditionFormula>
+    <errorDisplayField>Pontos__c</errorDisplayField>
+    <errorMessage>Saldo de pontos insuficiente para este resgate.</errorMessage>
+</ValidationRule>

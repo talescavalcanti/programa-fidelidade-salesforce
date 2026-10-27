@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CEP_Formato_Valido</fullName>
+    <active>true</active>
+    <description></description>
+    <errorConditionFormula>NOT(REGEX(CEP__c, "[0-9]{5}-?[0-9]{3}"))</errorConditionFormula>
+    <errorDisplayField>CEP__c</errorDisplayField>
+    <errorMessage>CEP inválido. Use 8 dígitos, com ou sem hífen (00000-000).</errorMessage>
+</ValidationRule>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>68.0</apiVersion>
+    <description>Após criar um Programa Fidelidade, cria o registro de Saldo de Pontos (carteira) ligado a ele.</description>
+    <environments>Default</environments>
+    <interviewLabel>RT Programa - Criar Saldo de Pontos {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>RT Programa - Criar Saldo de Pontos</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordCreates>
+        <name>Criar_Saldo</name>
+        <label>Criar Saldo de Pontos</label>
+        <locationX>176</locationX>
+        <locationY>300</locationY>
+        <inputAssignments>
+            <field>Programa_Fidelidade__c</field>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Saldo_de_Pontos__c</object>
+    </recordCreates>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <object>Programa_Fidelidade__c</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+        <connector>
+            <targetReference>Criar_Saldo</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+</Flow>

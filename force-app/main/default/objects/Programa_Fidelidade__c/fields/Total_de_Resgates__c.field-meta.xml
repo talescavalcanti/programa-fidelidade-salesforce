@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Total_de_Resgates__c</fullName>
+    <label>Total de Resgates</label>
+    <summarizedField>Resgate__c.Pontos__c</summarizedField>
+    <summaryFilterItems>
+        <field>Resgate__c.Status__c</field>
+        <operation>notEqual</operation>
+        <value>Rejeitado</value>
+    </summaryFilterItems>
+    <summaryForeignKey>Resgate__c.Programa_Fidelidade__c</summaryForeignKey>
+    <summaryOperation>sum</summaryOperation>
+    <trackTrending>false</trackTrending>
+    <type>Summary</type>
+</CustomField>

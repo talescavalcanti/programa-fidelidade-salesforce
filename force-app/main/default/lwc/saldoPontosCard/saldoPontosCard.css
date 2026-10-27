@@ -1,0 +1,27 @@
+.saldo {
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1.1;
+    color: #0b3c5d;
+}
+
+.categoria {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 1rem;
+    font-weight: 700;
+    font-size: 0.8125rem;
+    color: #ffffff;
+}
+
+.categoria-bronze {
+    background: #8c5a2b;
+}
+
+.categoria-prata {
+    background: #5f6b7a;
+}
+
+.categoria-ouro {
+    background: #8a6100;
+}

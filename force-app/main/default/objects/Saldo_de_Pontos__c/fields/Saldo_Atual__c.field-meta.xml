@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Saldo_Atual__c</fullName>
+    <label>Saldo Atual</label>
+    <formula>Programa_Fidelidade__r.Total_de_Pontos__c - Programa_Fidelidade__r.Total_de_Resgates__c</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <precision>18</precision>
+    <scale>0</scale>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+</CustomField>

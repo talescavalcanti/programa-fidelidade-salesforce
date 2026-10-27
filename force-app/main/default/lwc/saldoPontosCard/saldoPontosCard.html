@@ -1,0 +1,44 @@
+<template>
+    <lightning-card title="Saldo de Pontos" icon-name="standard:rewards">
+        <lightning-button-icon
+            slot="actions"
+            icon-name="utility:refresh"
+            alternative-text="Atualizar"
+            variant="border-filled"
+            onclick={atualizar}
+        ></lightning-button-icon>
+
+        <template lwc:if={resumo}>
+            <div class="slds-p-horizontal_medium slds-p-bottom_small">
+                <div class="slds-grid slds-grid_vertical-align-center slds-m-bottom_small">
+                    <div class="slds-col">
+                        <p class="slds-text-title">Saldo atual</p>
+                        <p class="saldo">{saldoFormatado}</p>
+                        <p class="slds-text-body_small slds-text-color_weak">pontos disponíveis</p>
+                    </div>
+                    <div class="slds-col slds-grow-none">
+                        <span class={classeCategoria}>{resumo.categoria}</span>
+                    </div>
+                </div>
+
+                <lightning-progress-bar value={resumo.percentual} size="large"></lightning-progress-bar>
+                <p class="slds-text-body_small slds-m-top_x-small">{textoProgresso}</p>
+
+                <dl class="slds-grid slds-wrap slds-m-top_small slds-text-body_small">
+                    <dt class="slds-col slds-size_1-of-2 slds-text-color_weak">Pontos acumulados</dt>
+                    <dd class="slds-col slds-size_1-of-2 slds-text-align_right">{totalPontosFormatado}</dd>
+                    <dt class="slds-col slds-size_1-of-2 slds-text-color_weak">Pontos resgatados</dt>
+                    <dd class="slds-col slds-size_1-of-2 slds-text-align_right">{totalResgatesFormatado}</dd>
+                </dl>
+            </div>
+        </template>
+        <template lwc:elseif={erro}>
+            <p class="slds-p-horizontal_medium slds-text-color_error">{erro}</p>
+        </template>
+        <template lwc:else>
+            <div class="slds-is-relative slds-p-around_large">
+                <lightning-spinner alternative-text="Carregando" size="small"></lightning-spinner>
+            </div>
+        </template>
+    </lightning-card>
+</template>

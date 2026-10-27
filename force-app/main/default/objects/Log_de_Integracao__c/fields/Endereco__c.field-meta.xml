@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Endereco__c</fullName>
+    <label>Endereço</label>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <referenceTo>Endereco__c</referenceTo>
+    <relationshipLabel>Logs de Integração</relationshipLabel>
+    <relationshipName>Logs</relationshipName>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

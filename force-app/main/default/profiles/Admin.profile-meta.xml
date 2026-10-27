@@ -1,6 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Profile xmlns="http://soap.sforce.com/2006/04/metadata">
     <custom>false</custom>
+    <customPermissions>
+        <enabled>true</enabled>
+        <name>Ajustar_Pontos</name>
+    </customPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Programa_Fidelidade__c.Cliente_VIP__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Programa_Fidelidade__c.Total_de_Pontos__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Programa_Fidelidade__c.Total_de_Resgates__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Programa_Fidelidade__c.Ultima_Movimentacao__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
         <field>Programa_Fidelidade__c.E_mail__c</field>
@@ -23,18 +47,147 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Resgate__c.Exige_Aprovacao__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Saldo_de_Pontos__c.Saldo_Atual__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Saldo_de_Pontos__c.Categoria_Atual__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Beneficio__c.Ativo__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Beneficio__c.Valor_Cashback__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Beneficio__c.Percentual_Desconto__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Beneficio__c.Descricao_do_Brinde__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Beneficio__c.Programa_Fidelidade__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Campanha_Promocional__c.Ativa__c</field>
         <readable>true</readable>
     </fieldPermissions>
-    <objectPermissions>
-        <allowCreate>true</allowCreate>
-        <allowDelete>true</allowDelete>
-        <allowEdit>true</allowEdit>
-        <allowRead>true</allowRead>
-        <modifyAllRecords>true</modifyAllRecords>
-        <object>Campanha_Promocional__c</object>
-        <viewAllRecords>true</viewAllRecords>
-    </objectPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Endereco__c.Logradouro__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Endereco__c.Numero__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Endereco__c.Complemento__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Endereco__c.Bairro__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Endereco__c.Cidade__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Endereco__c.Estado__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Log_de_Integracao__c.Endereco__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Log_de_Integracao__c.CEP_Consultado__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Log_de_Integracao__c.Sucesso__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Log_de_Integracao__c.Codigo_HTTP__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Log_de_Integracao__c.Mensagem__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Log_de_Integracao__c.Resposta__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Log_de_Integracao__c.Data_e_Hora__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <layoutAssignments>
+        <layout>Programa_Fidelidade__c-Programa Administrativo</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Resgate__c-Resgate Gestor</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Movimentacao_de_Pontos__c-Layout de Movimentação de Pontos</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Saldo_de_Pontos__c-Layout de Saldo de Pontos</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Endereco__c-Layout de Endereço</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Log_de_Integracao__c-Layout de Log de Integração</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Campanha_Promocional__c-Layout de Campanha Promocional</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Beneficio__c-Beneficio Cashback</layout>
+        <recordType>Beneficio__c.Cashback</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Beneficio__c-Beneficio Desconto</layout>
+        <recordType>Beneficio__c.Desconto</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Beneficio__c-Beneficio Brinde</layout>
+        <recordType>Beneficio__c.Brinde</recordType>
+    </layoutAssignments>
     <objectPermissions>
         <allowCreate>true</allowCreate>
         <allowDelete>true</allowDelete>
@@ -53,16 +206,110 @@
         <object>Movimentacao_de_Pontos__c</object>
         <viewAllRecords>true</viewAllRecords>
     </objectPermissions>
-    <tabVisibilities>
-        <tab>Campanha_Promocional__c</tab>
-        <visibility>DefaultOn</visibility>
-    </tabVisibilities>
+    <objectPermissions>
+        <allowCreate>true</allowCreate>
+        <allowDelete>true</allowDelete>
+        <allowEdit>true</allowEdit>
+        <allowRead>true</allowRead>
+        <modifyAllRecords>true</modifyAllRecords>
+        <object>Resgate__c</object>
+        <viewAllRecords>true</viewAllRecords>
+    </objectPermissions>
+    <objectPermissions>
+        <allowCreate>true</allowCreate>
+        <allowDelete>true</allowDelete>
+        <allowEdit>true</allowEdit>
+        <allowRead>true</allowRead>
+        <modifyAllRecords>true</modifyAllRecords>
+        <object>Saldo_de_Pontos__c</object>
+        <viewAllRecords>true</viewAllRecords>
+    </objectPermissions>
+    <objectPermissions>
+        <allowCreate>true</allowCreate>
+        <allowDelete>true</allowDelete>
+        <allowEdit>true</allowEdit>
+        <allowRead>true</allowRead>
+        <modifyAllRecords>true</modifyAllRecords>
+        <object>Beneficio__c</object>
+        <viewAllRecords>true</viewAllRecords>
+    </objectPermissions>
+    <objectPermissions>
+        <allowCreate>true</allowCreate>
+        <allowDelete>true</allowDelete>
+        <allowEdit>true</allowEdit>
+        <allowRead>true</allowRead>
+        <modifyAllRecords>true</modifyAllRecords>
+        <object>Campanha_Promocional__c</object>
+        <viewAllRecords>true</viewAllRecords>
+    </objectPermissions>
+    <objectPermissions>
+        <allowCreate>true</allowCreate>
+        <allowDelete>true</allowDelete>
+        <allowEdit>true</allowEdit>
+        <allowRead>true</allowRead>
+        <modifyAllRecords>true</modifyAllRecords>
+        <object>Endereco__c</object>
+        <viewAllRecords>true</viewAllRecords>
+    </objectPermissions>
+    <objectPermissions>
+        <allowCreate>true</allowCreate>
+        <allowDelete>true</allowDelete>
+        <allowEdit>true</allowEdit>
+        <allowRead>true</allowRead>
+        <modifyAllRecords>true</modifyAllRecords>
+        <object>Log_de_Integracao__c</object>
+        <viewAllRecords>true</viewAllRecords>
+    </objectPermissions>
+    <applicationVisibilities>
+        <application>PontoCerto</application>
+        <default>true</default>
+        <visible>true</visible>
+    </applicationVisibilities>
+    <recordTypeVisibilities>
+        <default>true</default>
+        <recordType>Beneficio__c.Cashback</recordType>
+        <visible>true</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <default>false</default>
+        <recordType>Beneficio__c.Desconto</recordType>
+        <visible>true</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <default>false</default>
+        <recordType>Beneficio__c.Brinde</recordType>
+        <visible>true</visible>
+    </recordTypeVisibilities>
     <tabVisibilities>
         <tab>Programa_Fidelidade__c</tab>
         <visibility>DefaultOn</visibility>
     </tabVisibilities>
     <tabVisibilities>
         <tab>Movimentacao_de_Pontos__c</tab>
+        <visibility>DefaultOn</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
+        <tab>Resgate__c</tab>
+        <visibility>DefaultOn</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
+        <tab>Saldo_de_Pontos__c</tab>
+        <visibility>DefaultOn</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
+        <tab>Beneficio__c</tab>
+        <visibility>DefaultOn</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
+        <tab>Campanha_Promocional__c</tab>
+        <visibility>DefaultOn</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
+        <tab>Endereco__c</tab>
+        <visibility>DefaultOn</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
+        <tab>Log_de_Integracao__c</tab>
         <visibility>DefaultOn</visibility>
     </tabVisibilities>
 </Profile>

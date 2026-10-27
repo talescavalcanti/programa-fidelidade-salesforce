@@ -1,0 +1,47 @@
+<template>
+    <lightning-card title="Benefícios Disponíveis" icon-name="standard:product_item">
+        <div slot="actions">
+            <lightning-input
+                type="toggle"
+                label="Só os que posso resgatar"
+                variant="label-hidden"
+                message-toggle-active="Só elegíveis"
+                message-toggle-inactive="Todos"
+                onchange={alternarFiltro}
+            ></lightning-input>
+        </div>
+
+        <template lwc:if={temItens}>
+            <ul class="slds-has-dividers_bottom-space slds-p-horizontal_medium">
+                <template for:each={itens} for:item="item">
+                    <li key={item.id} class="slds-item slds-p-vertical_small">
+                        <div class="slds-grid slds-grid_vertical-align-center">
+                            <div class="slds-col">
+                                <p class="slds-text-heading_small">{item.nome}</p>
+                                <p class="slds-text-body_small slds-text-color_weak">
+                                    <lightning-badge label={item.tipo}></lightning-badge>
+                                    <span class="slds-m-left_x-small">{item.detalhe}</span>
+                                </p>
+                            </div>
+                            <div class="slds-col slds-grow-none slds-text-align_right">
+                                <p class="pontos">{item.pontosFormatado} pts</p>
+                                <p class={item.classeStatus}>{item.textoStatus}</p>
+                            </div>
+                        </div>
+                    </li>
+                </template>
+            </ul>
+        </template>
+        <template lwc:elseif={erro}>
+            <p class="slds-p-horizontal_medium slds-text-color_error">{erro}</p>
+        </template>
+        <template lwc:elseif={carregado}>
+            <p class="slds-p-horizontal_medium slds-text-color_weak">Nenhum benefício para mostrar.</p>
+        </template>
+        <template lwc:else>
+            <div class="slds-is-relative slds-p-around_large">
+                <lightning-spinner alternative-text="Carregando" size="small"></lightning-spinner>
+            </div>
+        </template>
+    </lightning-card>
+</template>

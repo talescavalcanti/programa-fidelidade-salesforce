@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>68.0</apiVersion>
+    <description>Antes de salvar uma Movimentação, calcula Pontos = Pontos Base x Multiplicador da campanha (ajustes não usam multiplicador).</description>
+    <environments>Default</environments>
+    <interviewLabel>RT Movimentação - Calcular Pontos {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>RT Movimentação - Calcular Pontos</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <assignments>
+        <name>Definir_Pontos</name>
+        <label>Definir Pontos Finais</label>
+        <locationX>176</locationX>
+        <locationY>300</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Pontos__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>fPontosFinais</elementReference>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <formulas>
+        <name>fPontosFinais</name>
+        <dataType>Number</dataType>
+        <expression>IF(ISPICKVAL({!$Record.Tipo__c}, "Ajuste"), {!$Record.Pontos_Base__c}, ROUND({!$Record.Pontos_Base__c} * IF(ISBLANK({!$Record.Campanha__c}), 1, {!$Record.Campanha__r.Multiplicador__c}), 0))</expression>
+        <scale>0</scale>
+    </formulas>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <object>Movimentacao_de_Pontos__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+        <connector>
+            <targetReference>Definir_Pontos</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+</Flow>

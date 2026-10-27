@@ -1,58 +1,72 @@
-# Salesforce DX Project
+<p align="center">
+  <img src="docs/marca/logo-pontocerto.svg" alt="PontoCerto - Fidelidade que vale ponto" width="420">
+</p>
 
-Salesforce DX is a development approach that brings source-driven development, team collaboration, and continuous integration to the Salesforce Platform. Instead of working directly in an org through a web browser, you work with metadata as source files in a local DX project, track changes in version control, and deploy through automated processes.
+# PontoCerto — Programa de Fidelidade no Salesforce
 
-This project template gets you started with the tools and structure you need to build Salesforce applications using source control, scratch orgs, and the Salesforce CLI.
+Projeto acadêmico baseado no **Tópico 4 — Programa de Fidelidade** do documento *Temas de Projetos*:
+**gerenciar pontuação, benefícios, resgates e campanhas de fidelização.**
 
-## Prerequisites
+O participante acumula pontos por movimentações, campanhas promocionais multiplicam esses pontos e o saldo
+pode ser trocado por benefícios (Cashback, Desconto ou Brinde). Resgates acima de **1.000 pontos** passam por
+aprovação em **2 níveis** (Coordenador → Diretor). O endereço do participante é preenchido automaticamente
+pelo CEP, por meio da API **ViaCEP**, com log de auditoria.
 
-Before you start, make sure you have:
+## O que existe no projeto
 
-- **Salesforce CLI** - Download from [developer.salesforce.com/tools/salesforcecli](https://developer.salesforce.com/tools/salesforcecli). See [Install Salesforce CLI](https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_install_cli.htm) for details.
-- **VS Code with Salesforce Extension Pack** - See [Installation Instructions](https://developer.salesforce.com/docs/platform/sfvscode-extensions/guide/install.html) for details. Includes the Agentforce Vibes extension.
-- **A development org** - Sign up for a free Developer Edition org [here](https://developer.salesforce.com/signup).
-- **Dev Hub enabled** (optional, required to create scratch orgs) - You can enable Dev Hub in your development org under Setup > Dev Hub.  See [Provide Developers Access to Salesforce DX Tools](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_setup_dx_tools.htm).
+| Área | Entregas |
+|---|---|
+| **Dados** | 8 objetos customizados, relações Master-Detail e Lookup, 2 fórmulas, 3 Roll-Ups, Record Types e Page Layouts por perfil |
+| **Segurança** | 3 perfis, 3 papéis com Role Hierarchy, Sharing Rule por critério, Permission Set + permissão personalizada |
+| **Automação** | 3 Record-Triggered Flows, 1 Screen Flow, 2 Subflows, processo de aprovação de 2 níveis |
+| **Apex** | Trigger Framework, integração ViaCEP (callout), Queueable, log de auditoria, **44 testes / 99% de cobertura** |
+| **Interface** | Lightning App `PontoCerto`, Dynamic Forms, Dynamic Actions, 3 LWCs |
+| **Analytics** | 4 relatórios, Dashboard Executivo e Dashboard Operacional |
+| **Marca** | Nome comercial **PontoCerto**, logomarca e paleta em `docs/marca/` |
 
-## Project Structure
+## Estrutura do repositório
 
-Your DX project follows this structure:
+```text
+force-app/main/default/
+├── objects/            8 objetos, campos, regras de validação e Record Types
+├── layouts/            Page Layouts (por perfil e por Tipo de registro)
+├── flexipages/         Páginas Lightning com Dynamic Forms e Dynamic Actions
+├── applications/       Lightning App PontoCerto
+├── flows/              3 Record-Triggered + 1 Screen Flow + 2 Subflows
+├── approvalProcesses/  Aprovação de Resgate (2 níveis) e workflows de atualização de campo
+├── classes/ triggers/  Trigger Framework, ViaCEP, Queueable, controlador das LWCs e testes
+├── lwc/                saldoPontosCard, beneficiosDisponiveis, consultaCepStatus
+├── profiles/ roles/ permissionsets/ sharingRules/ customPermissions/
+├── reports/ dashboards/
+└── remoteSiteSettings/ ViaCEP
+scripts/apex/dados_demo.apex   Dados de demonstração
+docs/                          Relatório final, roteiro de apresentação e marca
+```
 
-- **`force-app/main/default/`** - Your metadata source files live in this default package directory. You can configure additional package directories in the `sfdx-project.json` file.
-- **`config/`** - Scratch org definitions and project settings
-- **`scripts/`** - Automation scripts for common tasks
-- **`sfdx-project.json`** - Project manifest that defines package directories, namespace, API version, and other project-level settings
+> Nem tudo pode ser versionado como código. **Usuários** (e a atribuição do Permission Set a eles) e os
+> **dados de demonstração** ficam apenas no org; o roteiro em `docs/ROTEIRO_APRESENTACAO.md` explica como
+> mostrá-los.
 
-See [Salesforce DX Project Configuration](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_ws_config.htm).
+## Como instalar em outro org (Developer Edition)
 
-## Get Started
+```bash
+sf org login web --alias fidelidade --set-default
+sf project deploy start --source-dir force-app            # implanta tudo
+sf apex run test --test-level RunLocalTests --code-coverage --result-format human --wait 20
+sf apex run -f scripts/apex/dados_demo.apex                # dados de demonstração (opcional)
+```
 
-Ready to start developing? The [Get Started with Salesforce DX](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_get_started_dx.htm) guide walks you through your first project, from creating a scratch org to creating a simple Apex class or LWC to deploying your code to a sandbox.
+Pontos de atenção ao implantar em um org novo:
 
-## Common Salesforce CLI Commands
+- Os usuários de demonstração não vêm junto. Crie um usuário por perfil (**Perfil Operacional**, **Perfil Gestor**
+  e **Perfil Administrativo**) com os papéis **Operador**, **Coordenador** e **Diretor**, atribua o Permission Set
+  **Ajuste de Pontos** ao Coordenador e ajuste os usernames dos aprovadores em
+  `approvalProcesses/Resgate__c.Aprovacao_de_Resgate.approvalProcess-meta.xml` e o `runningUser` em
+  `dashboards/PontoCerto/*.dashboard-meta.xml`.
+- A integração usa **Remote Site Setting** para `https://viacep.com.br` (já incluído).
+- O org de desenvolvimento usa a licença **Salesforce Platform** para os perfis personalizados.
 
-Here are common CLI commands that you'll use the most:
+## Documentação
 
-- `sf org login web`: Authorize an org
-- `sf org open`: Open your org in a browser
-- `sf org create scratch`: Create a scratch org
-- `sf project deploy start`: Deploy metadata to your org
-- `sf project retrieve start`: Retrieve metadata from your org
-- `sf template generate <artifact>`: Scaffold new components, such as Apex classes and triggers, LWC components, Lightning apps, and more
-- `sf apex <command>`: Run Apex tests, run anonymous Apex blocks, and view logs
-- `sf data <command>`: Work with test data
-- `sf alias <command>`: Manage org aliases
-- `sf config <command>`: Configure CLI settings
-
-## Use Agentforce Vibes to Build Lightning Apps
-
-Transform your ideas into custom Lightning apps that extend CRM workflows directly in Lightning Experience. Through natural conversations with Agentforce Vibes, implement custom objects and fields, complex business logic, and dynamic UI components. See [Build a Lightning App Using Agentforce Vibes](https://developer.salesforce.com/docs/platform/einstein-for-devs/guide/lexapp-overview.html).
-
-## Additional Resources
-
-- [Agentforce Vibes Developer Guide](https://developer.salesforce.com/docs/platform/einstein-for-devs/guide/einstein-overview.html)
-- [Salesforce CLI Installation Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_intro.htm)
-- [Salesforce DX Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/)
-- [Salesforce CLI Command Reference](https://developer.salesforce.com/docs/atlas.en-us.sfdx_cli_reference.meta/sfdx_cli_reference/)
-- [Salesforce CLI Plugin Development Guide](https://developer.salesforce.com/docs/platform/salesforce-cli-plugin/guide/conceptual-overview.html)
-- [Salesforce VS Code Extensions Documentation](https://developer.salesforce.com/tools/vscode/)
-
+- [`docs/RELATORIO_FINAL.md`](docs/RELATORIO_FINAL.md) — o que foi feito, decisões, matriz de requisitos com evidências e pendências.
+- [`docs/ROTEIRO_APRESENTACAO.md`](docs/ROTEIRO_APRESENTACAO.md) — roteiro de apresentação, demonstração passo a passo e perguntas prováveis do professor.

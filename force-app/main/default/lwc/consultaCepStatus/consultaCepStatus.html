@@ -1,0 +1,36 @@
+<template>
+    <lightning-card title="Consulta de CEP (ViaCEP)" icon-name="standard:address">
+        <lightning-button-icon
+            slot="actions"
+            icon-name="utility:refresh"
+            alternative-text="Atualizar"
+            variant="border-filled"
+            onclick={atualizar}
+        ></lightning-button-icon>
+
+        <template lwc:if={log}>
+            <div class="slds-p-horizontal_medium slds-p-bottom_small">
+                <p>
+                    <lightning-badge label={log.statusConsulta} class={classeStatus}></lightning-badge>
+                    <template lwc:if={aguardando}>
+                        <span class="slds-m-left_small slds-text-color_weak">Consultando o ViaCEP...</span>
+                    </template>
+                </p>
+                <template lwc:if={log.mensagem}>
+                    <p class="slds-m-top_small">{log.mensagem}</p>
+                    <p class="slds-text-body_small slds-text-color_weak">
+                        HTTP {log.codigoHttp} · {dataFormatada}
+                    </p>
+                </template>
+            </div>
+        </template>
+        <template lwc:elseif={erro}>
+            <p class="slds-p-horizontal_medium slds-text-color_error">{erro}</p>
+        </template>
+        <template lwc:else>
+            <div class="slds-is-relative slds-p-around_large">
+                <lightning-spinner alternative-text="Carregando" size="small"></lightning-spinner>
+            </div>
+        </template>
+    </lightning-card>
+</template>
